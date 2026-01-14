@@ -1,0 +1,22 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+## Visual Studio
+.vs/
+*.csproj.user
+
+## Rider
+.idea/
+
+## Docker
+**/docker-data/
+*.env
+
+## OS
+.DS_Store
+Thumbs.db
