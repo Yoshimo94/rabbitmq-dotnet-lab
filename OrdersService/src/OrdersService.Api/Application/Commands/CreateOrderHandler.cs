@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using OrdersService.Api.Infrastructure.Data;
 using OrdersService.Api.Domain;
-using OrdersService.Api.Domain.Events;
 using System.Text.Json;
+using Contracts.Events;
 
 namespace OrdersService.Api.Application.Commands
 {

@@ -1,4 +1,4 @@
-﻿namespace OrdersService.Api.Domain.Events
+﻿namespace Contracts.Events
 {
     public record OrderCreated(Guid OrderId, DateTime CreatedAtUtc);
 }
