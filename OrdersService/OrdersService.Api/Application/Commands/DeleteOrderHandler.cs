@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-using OrdersService.Api.Data;
-using OrdersService.Api.Models;
+using OrdersService.Api.Infrastructure.Data;
+using OrdersService.Api.Domain;
 
 namespace OrdersService.Api.Application.Commands
 {

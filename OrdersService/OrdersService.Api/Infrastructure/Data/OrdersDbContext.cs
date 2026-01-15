@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrdersService.Api.Models;
+using OrdersService.Api.Domain;
 
-namespace OrdersService.Api.Data
+namespace OrdersService.Api.Infrastructure.Data
 {
     public class OrdersDbContext : DbContext
     {
@@ -10,5 +10,7 @@ namespace OrdersService.Api.Data
         }
 
         public DbSet<Order> Orders => Set<Order>();
+        public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
+
     }
 }

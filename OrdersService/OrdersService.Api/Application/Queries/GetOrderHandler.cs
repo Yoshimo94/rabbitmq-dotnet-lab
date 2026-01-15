@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OrdersService.Api.Application.Commands;
-using OrdersService.Api.Data;
-using OrdersService.Api.Models;
+using OrdersService.Api.Domain;
+using OrdersService.Api.Infrastructure.Data;
 
 namespace OrdersService.Api.Application.Queries
 {

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using OrdersService.Api.Models;
 
 namespace OrdersService.Api.Application.Commands
 {

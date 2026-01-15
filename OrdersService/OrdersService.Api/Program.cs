@@ -1,11 +1,11 @@
 using MediatR;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using OrdersService.Api.Application.Commands;
 using OrdersService.Api.Application.Queries;
-using OrdersService.Api.Data;
+using OrdersService.Api.Infrastructure.Background;
+using OrdersService.Api.Infrastructure.Data;
+using OrdersService.Api.Infrastructure.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +26,9 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<OrdersDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("OrdersDb")));
+
+builder.Services.AddHostedService<OutboxPublisher>();
+builder.Services.AddScoped<IEventPublisher, RabbitMqPublisher>();
 
 builder.Services.AddMediatR(typeof(Program));
 

@@ -1,6 +1,8 @@
 ﻿using MediatR;
-using OrdersService.Api.Data;
-using OrdersService.Api.Models;
+using OrdersService.Api.Infrastructure.Data;
+using OrdersService.Api.Domain;
+using OrdersService.Api.Domain.Events;
+using System.Text.Json;
 
 namespace OrdersService.Api.Application.Commands
 {
@@ -19,10 +21,23 @@ namespace OrdersService.Api.Application.Commands
             {
                 Id = Guid.NewGuid(),
                 ProductName = request.ProductName,
-                Price = request.Price
+                Price = request.Price,
+                CreatedAtUtc = DateTime.UtcNow,
+            };
+
+            var @event = new OrderCreated(order.Id, order.CreatedAtUtc);
+
+            var outboxMessage = new OutboxMessage()
+            {
+                Id = Guid.NewGuid(),
+                Type = nameof(OrderCreated),
+                Content = JsonSerializer.Serialize(@event),
+                OccurredOnUtc = DateTime.UtcNow,
             };
 
             _db.Orders.Add(order);
+            _db.OutboxMessages.Add(outboxMessage);
+
             await _db.SaveChangesAsync(cancellationToken);
 
             return order.Id;

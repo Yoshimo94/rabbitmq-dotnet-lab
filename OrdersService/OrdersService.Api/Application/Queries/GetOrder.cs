@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using OrdersService.Api.Models;
+using OrdersService.Api.Domain;
 
 namespace OrdersService.Api.Application.Queries
 {
